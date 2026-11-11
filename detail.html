@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Koleksi — NAA ArchiveVault</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header" id="atas">
+  <div class="container header-inner">
+    <a class="brand" href="index.php"><span class="brand-mark">AV</span> ArchiveVault</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="index.php">Beranda</a>
+      <a href="katalog.html" class="is-active">Katalog Koleksi</a>
+      <a href="formulir.html">Daftar Anggota</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <a class="back" href="katalog.html">← Kembali ke Katalog</a>
+  <div id="konten" class="detail">
+    <figure><img id="gambar" src="images/av-001.svg" alt=""></figure>
+    <div>
+      <p class="eyebrow" id="kategori"></p>
+      <h1 id="judul" style="font-size:2rem"></h1>
+      <p id="deskripsi" class="muted"></p>
+      <table aria-label="Metadata koleksi">
+        <tr><th>ID Arsip</th><td id="m-id"></td></tr>
+        <tr><th>Kategori</th><td id="m-kategori"></td></tr>
+        <tr><th>Tema</th><td id="m-tema"></td></tr>
+        <tr><th>Tahun</th><td id="m-tahun"></td></tr>
+        <tr><th>Pencipta</th><td id="m-pencipta"></td></tr>
+        <tr><th>Lokasi</th><td id="m-lokasi"></td></tr>
+        <tr><th>Status akses</th><td id="m-akses"></td></tr>
+        <tr><th>Salinan digital</th><td id="m-digital"></td></tr>
+      </table>
+      <p class="note">Data contoh untuk prototipe; belum diverifikasi terhadap sumber arsip resmi.</p>
+    </div>
+  </div>
+  <div id="tidak-ada" hidden>
+    <h1>Koleksi tidak ditemukan</h1>
+    <p class="muted">Tautan yang Anda buka tidak cocok dengan koleksi mana pun.</p>
+  </div>
+  <div class="actions">
+    <a class="btn" href="katalog.html">← Kembali ke Katalog</a>
+    <a class="btn btn-outline" href="index.php">Ke Beranda</a>
+  </div>
+</main>
+<script>
+// Data koleksi contoh (prototipe tanpa basis data). Dibaca dari detail.html?id=av-001
+var DATA = {
+ "av-001": {
+  "id": "AV-001",
+  "judul": "Poster Imigrasi Australia",
+  "kategori": "Poster",
+  "tema": "Imigrasi",
+  "tahun": 1965,
+  "pencipta": "Pemerintah Australia",
+  "lokasi": "Canberra, ACT",
+  "akses": "Terbuka",
+  "digital": "Salinan digital tersedia",
+  "deskripsi": "Poster informasi publik yang mengajak masyarakat bermigrasi ke Australia, memperlihatkan strategi komunikasi pemerintah pada masanya."
+ },
+ "av-002": {
+  "id": "AV-002",
+  "judul": "Memorandum Kebijakan Persemakmuran",
+  "kategori": "Dokumen",
+  "tema": "Pemerintahan",
+  "tahun": 1955,
+  "pencipta": "Departemen Dalam Negeri",
+  "lokasi": "Canberra, ACT",
+  "akses": "Terbuka",
+  "digital": "Perlu informasi akses",
+  "deskripsi": "Memorandum internal pemerintah tentang perubahan kebijakan administrasi di sebuah departemen Persemakmuran."
+ },
+ "av-003": {
+  "id": "AV-003",
+  "judul": "Foto Kehidupan Komunitas, Jalan Pinggiran Kota",
+  "kategori": "Foto",
+  "tema": "Kehidupan Sosial",
+  "tahun": 1962,
+  "pencipta": "Fotografer tidak diketahui",
+  "lokasi": "Sydney, NSW",
+  "akses": "Terbuka",
+  "digital": "Salinan digital tersedia",
+  "deskripsi": "Foto kehidupan sehari-hari di kawasan pinggiran kota yang merekam kondisi sosial dan aktivitas warga pada masa itu."
+ },
+ "av-006": {
+  "id": "AV-006",
+  "judul": "Poster Peringatan Warisan Nasional",
+  "kategori": "Poster",
+  "tema": "Budaya & Warisan",
+  "tahun": 1988,
+  "pencipta": "Otoritas Bicentennial Australia",
+  "lokasi": "Canberra, ACT",
+  "akses": "Terbuka",
+  "digital": "Salinan digital tersedia",
+  "deskripsi": "Poster peringatan perayaan warisan nasional yang memperlihatkan desain budaya akhir 1980-an."
+ },
+ "av-008": {
+  "id": "AV-008",
+  "judul": "Rekaman Wawancara Migrasi Pascaperang",
+  "kategori": "Audiovisual",
+  "tema": "Imigrasi",
+  "tahun": 1951,
+  "pencipta": "Departemen Imigrasi",
+  "lokasi": "Sydney, NSW",
+  "akses": "Terbuka",
+  "digital": "Salinan digital tersedia",
+  "deskripsi": "Rekaman sejarah lisan tentang pengalaman keluarga migran pascaperang yang tiba di Australia."
+ },
+ "av-010": {
+  "id": "AV-010",
+  "judul": "Poster Garis Depan Masa Perang",
+  "kategori": "Poster",
+  "tema": "Perang & Militer",
+  "tahun": 1942,
+  "pencipta": "Departemen Informasi",
+  "lokasi": "Melbourne, VIC",
+  "akses": "Terbuka",
+  "digital": "Salinan digital tersedia",
+  "deskripsi": "Poster propaganda masa perang yang mengajak warga sipil berkontribusi pada upaya perang nasional."
+ }
+};
+var id = new URLSearchParams(location.search).get('id') || 'av-001';
+var k = DATA[id.toLowerCase()];
+if (!k) {
+  document.getElementById('konten').hidden = true;
+  document.getElementById('tidak-ada').hidden = false;
+} else {
+  document.title = k.judul + ' — NAA ArchiveVault';
+  var g = document.getElementById('gambar'); g.src = 'images/' + id.toLowerCase() + '.svg'; g.alt = k.judul;
+  var set = function (e, v) { document.getElementById(e).textContent = v; };
+  set('judul', k.judul); set('deskripsi', k.deskripsi); set('kategori', k.kategori + ' · ' + k.tahun);
+  set('m-id', k.id); set('m-kategori', k.kategori); set('m-tema', k.tema); set('m-tahun', k.tahun);
+  set('m-pencipta', k.pencipta); set('m-lokasi', k.lokasi); set('m-akses', k.akses); set('m-digital', k.digital);
+}
+</script>
+<footer class="site-footer">
+  <div class="container">
+    <a href="index.php">Beranda</a><a href="katalog.html">Katalog Koleksi</a><a href="formulir.html">Daftar Anggota</a>
+    <p>Prototipe tugas kuliah bertema Arsip Nasional Australia (NAA) sebagai studi kasus. Bukan situs resmi NAA; seluruh data adalah data contoh.</p>
+    <p>(CC) 2026 Sarifa Nurfadila, 250911721355</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Data — NAA ArchiveVault</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header" id="atas">
+  <div class="container header-inner">
+    <a class="brand" href="index.php"><span class="brand-mark">AV</span> ArchiveVault</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="index.php">Beranda</a>
+      <a href="katalog.html" >Katalog Koleksi</a>
+      <a href="formulir.html">Daftar Anggota</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <a class="back" href="index.php">← Kembali ke Beranda</a>
+  <div class="page-title"><h1>Model Data Logis (ERD)</h1>
+  <p class="muted">Rancangan basis data ArchiveVault dalam Bentuk Normal Ketiga (3NF), notasi Crow's Foot. Tabel utama: <code>koleksi_arsip</code>.</p></div>
+  <figure><a href="images/erd_glam.png"><img src="images/erd_glam.png" alt="ERD Crow's Foot: anggota, peminjaman, detail_peminjaman, koleksi_arsip, kategori, minat_anggota" style="width:100%;height:auto;background:#fff;border-radius:8px"></a></figure>
+  <ul>
+    <li><strong>kategori → koleksi_arsip</strong> 1:N, wajib di sisi koleksi.</li>
+    <li><strong>anggota → peminjaman</strong> 1:N; <strong>peminjaman ↔ koleksi_arsip</strong> M:N diurai oleh <code>detail_peminjaman</code>.</li>
+    <li><strong>anggota ↔ kategori</strong> M:N (minat koleksi) diurai oleh <code>minat_anggota</code>.</li>
+  </ul>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <a href="index.php">Beranda</a><a href="katalog.html">Katalog Koleksi</a><a href="formulir.html">Daftar Anggota</a>
+    <p>Prototipe tugas kuliah bertema Arsip Nasional Australia (NAA) sebagai studi kasus. Bukan situs resmi NAA; seluruh data adalah data contoh.</p>
+    <p>(CC) 2026 Sarifa Nurfadila, 250911721355</p>
+  </div>
+</footer>
+</body>
+</html>

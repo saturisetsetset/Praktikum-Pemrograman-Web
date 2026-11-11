@@ -1,0 +1,108 @@
+:root{--paper:#ECE9E4;--ink:#000;--muted:rgba(0,0,0,.66);--line:rgba(0,0,0,.16);--wash:rgba(0,0,0,.055);
+--serif:Charter,'Iowan Old Style',Georgia,serif;--sans:-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans)}
+a{color:inherit}
+.container{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2rem,5vw,3.4rem)}h2{font-size:1.6rem}h3{font-size:1.15rem}
+.muted{color:var(--muted)}
+/* global nav */
+.site-header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--serif);font-weight:700;font-size:1.15rem}
+.brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--paper);font-size:.85rem}
+.nav a{display:inline-block;padding:6px 14px;border-radius:999px;text-decoration:none;font-weight:500;margin-left:4px}
+.nav a:hover,.nav a.is-active{background:var(--ink);color:var(--paper)}
+/* buttons */
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn-outline{background:transparent;color:var(--ink)}.btn-outline:hover{background:var(--ink);color:var(--paper)}
+.back{display:inline-block;margin:24px 0 8px;font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--ink)}
+.chip{display:inline-block;padding:2px 12px;border:1px solid var(--line);border-radius:999px;font-size:.8rem;margin-right:6px}
+/* home */
+.hero{padding:64px 0 48px}.hero p{max-width:620px;font-size:1.1rem;color:var(--muted)}
+.banner{background:var(--ink);color:var(--paper);border-radius:24px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-bottom:56px}
+.banner img{width:100%;border-radius:14px;display:block}.banner p{color:rgba(236,233,228,.75)}
+.banner .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}.banner .btn:hover{background:transparent;color:var(--paper)}
+.eyebrow{text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;font-weight:700;opacity:.7}
+/* catalog */
+.page-title{padding:8px 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;padding-bottom:56px}
+.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#f5f3ef;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--wash)}
+.card-body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-body p{margin:0;color:var(--muted);font-size:.93rem}
+.card-body .btn{margin-top:auto;text-align:center}
+/* detail */
+.detail{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;padding-bottom:40px;align-items:start}
+.detail figure{margin:0}.detail figure img{width:100%;border-radius:18px;border:1px solid var(--line);display:block}
+table{width:100%;border-collapse:collapse;background:#f5f3ef;border:1px solid var(--line);border-radius:12px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{width:38%;background:var(--wash);font-weight:600}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 56px}
+.note{font-size:.85rem;color:var(--muted);margin-top:14px}
+.site-footer{background:var(--ink);color:var(--paper);padding:28px 0;font-size:.88rem}
+.site-footer a{margin-right:16px}.site-footer p{margin:.4em 0;color:rgba(236,233,228,.7)}
+@media(max-width:760px){.banner,.detail{grid-template-columns:1fr}}
+
+
+/* Tugas 7: formulir pendaftaran anggota */
+.form-head{max-width:740px;padding:16px 0 24px}
+.form-head h1{margin:4px 0 12px}
+.form-head p:last-child{margin-bottom:0}
+.registration-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,.9fr);gap:24px;align-items:start;padding-bottom:64px}
+.form-card{background:#f8f7f4;border:1px solid var(--line);border-radius:20px;padding:28px 32px}
+.form-card>h2{font-size:1.5rem;margin-bottom:24px}
+.form-section{margin:0;padding:0 0 26px;border:0;border-bottom:1px solid var(--line);min-width:0}
+.form-section+.form-section{padding-top:25px}
+.form-section legend{font-family:var(--serif);font-size:1.18rem;font-weight:700;padding:0;margin-bottom:14px}
+.form-section+.form-section legend{padding-top:18px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.form-grid .field{margin-bottom:0}
+.field-full{grid-column:1 / -1}
+.field>label{font-size:.91rem;font-weight:700}
+.required-mark{color:#a42c2c}
+.optional{font-size:.82rem;color:var(--muted);font-weight:400}
+.field>small{font-size:.77rem;line-height:1.5;color:var(--muted)}
+.field>input,.field>select{width:100%;min-height:48px;padding:10px 13px;background:#fff;border:1.5px solid #b7b5af;border-radius:9px;color:#171717;font:inherit;transition:border-color .15s,box-shadow .15s}
+.field>input::placeholder{color:#747474}
+.field>input:focus,.field>select:focus{outline:none;box-shadow:0 0 0 3px rgba(0,0,0,.08)}
+/* Persyaratan feedback visual HTML5 :focus:invalid / :focus:valid */
+.field>input:focus:invalid,.field>select:focus:invalid{border-color:#b73333;box-shadow:0 0 0 3px rgba(183,51,51,.12)}
+.field>input:focus:valid,.field>select:focus:valid{border-color:#247a51;box-shadow:0 0 0 3px rgba(36,122,81,.13)}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.choice{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid #d1cec8;border-radius:10px;background:#fff;cursor:pointer;font-size:.89rem;min-height:45px}
+.choice:has(input:checked){border-color:#171717;background:#eeece7}
+.choice input{width:17px;height:17px;accent-color:#161616;flex-shrink:0}
+.choice:focus-within{outline:2px solid #595959;outline-offset:2px}
+.form-bottom{padding-top:18px}
+.privacy-text{font-size:.85rem;color:var(--muted);margin:0 0 17px}
+.form-actions{display:flex;flex-wrap:wrap;gap:12px}
+.form-actions .btn{cursor:pointer;font:inherit;font-weight:600}
+.success-message{margin-top:22px;background:#e7f2e9;color:#1f5c37;padding:14px 16px;border:1px solid #79a98a;border-radius:10px;font-size:.89rem}
+.success-message[hidden]{display:none}
+.form-aside{position:sticky;top:86px;border-radius:19px;background:#171717;color:#f3f0e9;padding:32px 28px}
+.form-aside .aside-number{font-size:.75rem;letter-spacing:.13em;color:#bdb9b3;font-weight:700}
+.form-aside h2{font-size:2.3rem;margin:36px 0 16px}
+.form-aside p{color:#d7d4ce;font-size:.95rem}
+.form-aside ul{padding-left:19px;margin:26px 0 32px;color:#d7d4ce;font-size:.88rem}
+.form-aside li+li{margin-top:12px}
+.aside-link{display:inline-block;color:#f3f0e9;text-underline-offset:5px;font-size:.9rem;font-weight:600}
+@media(max-width:900px){.registration-layout{grid-template-columns:1fr}.form-aside{position:static}.form-aside h2{font-size:1.9rem;margin:18px 0 8px}}
+@media(max-width:540px){.form-card{padding:20px 17px}.form-grid,.choice-grid{grid-template-columns:1fr}.form-actions .btn{width:100%;text-align:center}.form-head{padding-top:8px}}
+
+/* Tugas 9: hasil validasi PHP Native */
+.result-card{max-width:940px;margin:12px 0 22px;border:1px solid var(--line);border-radius:20px;background:#f8f7f4;padding:34px 38px;min-height:275px}
+.result-card h2{font-size:clamp(1.5rem,3vw,2rem);margin:12px 0}
+.result-label{display:inline-block;background:#e4e0d8;border-radius:999px;padding:5px 13px;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.result-label--success{background:#dfeee4;color:#236342}.result-label--error{background:#f3e2e0;color:#a62c2c}
+.result-success{color:#245f3a}.result-error{color:#962d2d}
+.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:25px 0}
+.result-grid>div{padding:15px;border:1px solid #d7d4ce;border-radius:12px;background:#fff;overflow-wrap:anywhere}
+.result-grid span{display:block;font-size:.75rem;letter-spacing:.03em;color:#555;margin-bottom:4px}.result-grid strong{font-size:.94rem}
+.result-note{border-left:3px solid #38634b;padding:9px 13px;background:#eef4ee;font-size:.85rem;color:#2a4e38}
+.result-errors{padding:16px 18px 16px 36px;border-radius:10px;background:#f9eeed;color:#852b2b;max-width:720px}
+.result-after{max-width:940px;margin:0 0 56px;font-size:.85rem}
+@media(max-width:600px){.result-card{padding:24px 19px}.result-grid{grid-template-columns:1fr}}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir Pendaftaran Anggota — NAA ArchiveVault</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header" id="atas">
+  <div class="container header-inner">
+    <a class="brand" href="index.php"><span class="brand-mark">AV</span> ArchiveVault</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="index.php">Beranda</a>
+      <a href="katalog.html">Katalog Koleksi</a>
+      <a href="formulir.html" class="is-active" aria-current="page">Daftar Anggota</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <a class="back" href="index.php">← Kembali ke Beranda</a>
+  <div class="form-head">
+    <p class="eyebrow">Layanan pengguna · Prototipe GLAM</p>
+    <h1>Daftar sebagai anggota</h1>
+    <p class="muted">Lengkapi formulir berikut untuk mencoba alur pendaftaran pengguna NAA ArchiveVault. Kolom dengan tanda <span aria-label="wajib diisi">*</span> wajib diisi.</p>
+  </div>
+  <div class="registration-layout">
+    <section class="form-card" aria-labelledby="judul-form">
+      <h2 id="judul-form">Informasi pendaftaran</h2>
+      <form id="form-pendaftaran" action="layanan.php" method="POST">
+        <fieldset class="form-section">
+          <legend>01 / Data diri</legend>
+          <div class="form-grid">
+            <div class="field field-full">
+              <label for="nama">Nama lengkap <span class="required-mark">*</span></label>
+              <input id="nama" name="nama" type="text" placeholder="Contoh: Sarifa Nurfadila" autocomplete="name" minlength="3" maxlength="80" required>
+              <small>Masukkan nama sesuai identitas (minimal 3 karakter).</small>
+            </div>
+            <div class="field">
+              <label for="email">Alamat email <span class="required-mark">*</span></label>
+              <input id="email" name="email" type="email" placeholder="nama@contoh.com" autocomplete="email" maxlength="100" required>
+              <small>Gunakan format email yang benar, misalnya nama@contoh.com.</small>
+            </div>
+            <div class="field">
+              <label for="telepon">Nomor telepon <span class="required-mark">*</span></label>
+              <input id="telepon" name="telepon" type="tel" inputmode="tel" placeholder="+6281234567890" pattern="[+]?[0-9]{10,15}" title="Gunakan 10–15 digit angka, boleh diawali tanda +." autocomplete="tel" required>
+              <small>10–15 digit angka; tanda + di awal diperbolehkan.</small>
+            </div>
+            <div class="field field-full">
+              <label for="tanggal-lahir">Tanggal lahir <span class="required-mark">*</span></label>
+              <input id="tanggal-lahir" name="tanggal_lahir" type="date" min="1900-01-01" required>
+              <small>Gunakan pemilih tanggal. Tanggal tidak boleh melewati hari ini.</small>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-section">
+          <legend>02 / Keperluan akses</legend>
+          <div class="field">
+            <label>Kategori anggota <span class="required-mark">*</span></label>
+            <div class="choice-grid" role="group" aria-label="Kategori anggota">
+              <label class="choice"><input type="radio" name="kategori_anggota" value="Pelajar" required> Pelajar</label>
+              <label class="choice"><input type="radio" name="kategori_anggota" value="Mahasiswa"> Mahasiswa</label>
+              <label class="choice"><input type="radio" name="kategori_anggota" value="Peneliti"> Peneliti</label>
+              <label class="choice"><input type="radio" name="kategori_anggota" value="Umum"> Umum</label>
+            </div>
+            <small>Pilih satu kategori yang paling sesuai.</small>
+          </div>
+          <div class="field">
+            <label for="tujuan">Tujuan penggunaan arsip <span class="required-mark">*</span></label>
+            <select id="tujuan" name="tujuan" required>
+              <option value="" selected disabled>— Pilih tujuan penggunaan —</option>
+              <option value="Penelitian">Penelitian</option>
+              <option value="Tugas sekolah atau kuliah">Tugas sekolah atau kuliah</option>
+              <option value="Penelusuran sejarah keluarga">Penelusuran sejarah keluarga</option>
+              <option value="Pembelajaran umum">Pembelajaran umum</option>
+              <option value="Kebutuhan lain">Kebutuhan lain</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Minat kategori koleksi <span class="optional">(opsional, boleh lebih dari satu)</span></label>
+            <div class="choice-grid" role="group" aria-label="Minat kategori koleksi">
+              <label class="choice"><input type="checkbox" name="minat_koleksi[]" value="Poster"> Poster</label>
+              <label class="choice"><input type="checkbox" name="minat_koleksi[]" value="Dokumen"> Dokumen</label>
+              <label class="choice"><input type="checkbox" name="minat_koleksi[]" value="Foto"> Foto</label>
+              <label class="choice"><input type="checkbox" name="minat_koleksi[]" value="Audiovisual"> Audiovisual</label>
+            </div>
+            <small>Pilihan dapat disesuaikan dengan koleksi yang tersedia pada katalog.</small>
+          </div>
+        </fieldset>
+        <div class="form-bottom">
+          <p class="privacy-text">Data diperiksa kembali oleh PHP di server lokal. Ini simulasi tugas kuliah dan data tidak disimpan ke database.</p>
+          <div class="form-actions">
+            <button class="btn" type="submit">Kirim Pendaftaran →</button>
+            <button class="btn btn-outline" type="reset">Kosongkan</button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <aside class="form-aside" aria-labelledby="judul-panduan">
+      <span class="aside-number">09 / PHP BACK-END</span>
+      <h2 id="judul-panduan">Rapi sejak langkah pertama.</h2>
+      <p>Format data diperiksa di browser dan diperiksa ulang dengan PHP Native sebelum dinyatakan valid.</p>
+      <ul>
+        <li><strong>Lengkap.</strong> Kolom bertanda bintang harus diisi.</li>
+        <li><strong>Sesuai format.</strong> Email, telepon, dan tanggal juga diperiksa oleh server.</li>
+        <li><strong>Jelas.</strong> Kategori anggota dipilih satu; minat dapat lebih dari satu.</li>
+      </ul>
+      <a href="katalog.html" class="aside-link">Lihat koleksi yang tersedia ↗</a>
+    </aside>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <a href="index.php">Beranda</a><a href="katalog.html">Katalog Koleksi</a><a href="formulir.html">Daftar Anggota</a>
+    <p>Prototipe tugas kuliah bertema Arsip Nasional Australia (NAA) sebagai studi kasus. Bukan situs resmi NAA; seluruh data adalah data contoh.</p>
+    <p>(CC) 2026 Sarifa Nurfadila, 250911721355</p>
+  </div>
+</footer>
+<script>
+// Batasi pilihan tanggal di browser; pemeriksaan ulang juga dilakukan di PHP.
+const tanggal = document.getElementById('tanggal-lahir');
+const today = new Date();
+tanggal.max = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
+</script>
+</body>
+</html>
